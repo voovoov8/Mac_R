@@ -1,0 +1,439 @@
+---
+title: "경빅대_쿼토"
+author: "yoon"
+format: html
+editor: visual
+---
+
+# 쿼토의 개요 (heading)
+
+쿼토는 데이터 사이언스에서 많이 사용되는 문서 작성 프로그램입니다.
+
+## 사용 목적
+
+사용 목적은 다음과 같습니다. - 문서 관리 - 정보 교환
+
+## 데이터 분석
+
+auto.csv 데이터를 불러들입니다.
+
+code-chunk를 삽입합니다.
+
+ggplot2를 이용해서 산포도를 그려보겠습니다.
+
+가로축은 mpg, 세로축은 price를 그려보겠습니다.
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(readr)
+library(readxl)
+theme_set(theme_grey(base_family='NanumGothic'))
+
+```
+
+<br> <br> <br> <br> <br> <br>
+
+# 회귀분석
+
+## ols 의 이론적 이해
+
+$$
+y_i = \beta_0 + \beta_1 x_i + e_i
+$$ {#eq-regression}
+
+$$
+y_i = \beta_0 +\beta_1 x_i + e_i
+$$
+
+-   $=$를 중심으로 왼쪽에 있는 변수 $y$, 종속변수 혹은 피설면변수
+
+-   $=$를 중심으로 오른쪽에 있는 변수 $y$, 종속변수 혹은 피설면변수 $x$, 독립변수 혹은 설명변수
+
+-   $e$ 는 오차할 , 설명되지 않는 부분
+
+-   $x$ rk 1개 이면 단순회귀, $x$ 가 여러개이면 다중회귀
+
+-   아래 오차제곱의 합이 가장 작아지도록 $beta_0, \beta_1$ 을 정한다.
+
+$$ 
+\sum_{i=1}^ {n} e_i^2
+$$
+
+-   ols 라고 한다. (위의 공식을 외우란다)
+
+```{r}
+```
+
+```{r}
+library(tidyverse)
+ceosal<- readr::read_csv("ceosal1.csv", 
+                         col_name= TRUE)
+```
+
+-   기업의 CEO의 연봉에 대한 데이터
+
+```{r}
+str(ceosal)
+```
+
+-   salary 를 수익률 roe 가 설명할 수 있는가? 또는 얼마나 설명하는가? 왜? 나는 roe, 즉 마진/ equity 가 노동의 대가를 설명할 수 있다고 보기 때문 다시 말하면, 벌어들이는 돈중 순수한 이익이 노동의 대가의 scales 로 산출될 수 있는 것일까?
+
+$$ 
+ salary_i = a + b \times roe_i = e_i
+$$
+
+<br>
+
+-   귀무가설 null hupothesis $H_0$ <br> $$ 
+    H_0 : b = 0 
+    $$
+
+<br>
+
+## 그림 그려보기
+
+-   Roe 가 가로축, salary가 세로축인 산포도
+
+```{r}
+ggplot(ceosal, mapping = aes(x=roe, y = sales )) +
+  geom_point() + 
+  labs(title = "ROE 와 salary")
+```
+
+```{r}
+library(RColorBrewer)
+display.brewer.all()
+```
+
+<br> - Roe 가 가로축, salary가 세로축인 산포도 indus 별로 다른색
+
+```{r}
+ggplot(ceosal, mapping = aes(x=roe, y = sales, color = as.factor(indus))) +
+  geom_point() + 
+  labs(title = "ROE 와 salary") + 
+  theme_minimal(base_family='NanumGothic') +
+  scale_color_brewer(palette =  "Blues")
+```
+
+-   as.factor를 활용해서 1또는 0의 변수로 인지시킨다.
+
+<br>
+
+```{r}
+ggplot(ceosal, mapping = aes( x = roe, y = salary )) +
+  geom_point() +
+  geom_smooth(method = "lm",
+              se =TRUE)+ 
+  labs( title = "산포도와 lfit")
+```
+
+<br> - 모형의 계수 $a, b$ 를 OLS로 추정한다
+
+```{r}
+lm.roe <- lm(salary ~roe, data = ceosal)
+summary(lm.roe)
+```
+
+<br>
+
+"roe가 1 들어났을때, 셀러리가 18.5 늘어난다."고 해석한다. a는 roe = 10 , b는 roe = 11 이라고 했을때 우린 이걸 보고 b가 a보다 salary 가 18.5 만큼 더 크겠구나 하고 해석한다는 것.
+
+roe가 salary 를 잘 설명 못하는데( 유의수준 ) 따라서 귀무가설을 기각할 수가 없음.
+
+```{r}
+#install.packages("stargazer")
+```
+
+-   회귀분석 결과 통계에 대한 고품질 패키지 "stargazer"
+
+```{r}
+library(stargazer)
+```
+
+```{r}
+stargazer(lm.roe, 
+          type ="text",
+          keep.stat = c("n", "rsq"))
+```
+
+-   1종 오류(false positive) : 0인데 0이 아니라고 하는 오류
+-   유의수준 5%, 기각역 2 (1.96), 신뢰수준 95%
+
+# 11/13 강의내용
+
+-   roe와 임금의 관계로 돌아와서
+
+-   roe 대신에 다른 설명변수, 예를 들어서 sales, 매출액
+
+-   sales 하고 roe 와의 상관관계
+
+```{r}
+print(cor(ceosal$sales, ceosal$salary))
+
+```
+
+## 그림 그려보기
+
+```{r}
+ggplot(ceosal, mapping = aes(x = sales, y = salary)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "blue")
+```
+
+-   sales 는 \<25000 이고 salary \<5000인 기업만 대상으로 그려보자 geom_rug()
+
+```{r}
+ggplot(ceosal, mapping = aes(x = sales, y = salary)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "blue") +
+  xlim(0, 25000) + 
+  ylim(0, 5000)
+```
+
+-   이 방식도 있다.
+
+```{r}
+print("로그를 취한 분포를 확인하는 경우")
+ceosal |>  
+  filter(sales < 25000 & salary < 5000) |>  
+  mutate(log_sales = log(sales), log_salary = log(salary)) |>  
+  ggplot(mapping = aes(x = log_sales, y = log_salary)) +  
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "blue") +
+  geom_rug() 
+
+```
+
+-   회귀모형을 다음과 같이 바꾼다 $$
+    \log(salary_i) =  a + b\log(sales_i) + e_i 
+    $$
+
+```{r}
+str(ceosal)
+```
+
+```{r}
+lm.sales <- lm(lsalary ~ lsales, data = ceosal)
+stargazer( lm.sales,
+           type = "text",
+           keep.stat = c("n", "rsq"))
+```
+
+-   이걸 해석하는 방식이 중요하겠다 y의 x에 대한 탄력성이다. 즉 x가 1% 변했을때 y가 몇프로 변하느냐를 측정하는 방식
+
+여기까지가 $x$ 가 하나인 simple regression
+
+```{r}
+rm(list = ls())
+gpa<- read.csv("gpa1.csv",
+                header = TRUE,
+                sep = "\t")
+attach(gpa)
+str(gpa)
+```
+
+```{r}
+library(ggplot2)
+```
+
+-   hsgpa colgpa 의 상관관계를 산포도로 그리되 male 에 따라서 다른색으로
+
+```{r}
+ggplot(gpa, mapping = aes(x = hsGPA , colGPA, color= as.factor(male))) +
+  geom_point()
+```
+
+자 위와 같은 방법에서는 특정 점에 여러개 찍었을때 확인할 수 있는 방법이 없다 해결법 1. 색아주 연하게 해서 겹치면 찐하게 되는 방식 2. jitter
+
+```{r}
+ggplot(gpa, mapping = aes(x = hsGPA , colGPA, color= as.factor(male))) +
+  geom_point() + 
+  geom_smooth(method = "lm")
+  geom_jitter(width = 0.2)
+```
+
+```{r}
+ggplot(gpa, mapping = aes(x = hsGPA, y = colGPA, color = as.factor(male))) +  
+  geom_point() + 
+  geom_jitter(width = 0.2) +  
+  geom_smooth(method = "lm", aes(group = 1), se = FALSE)  
+```
+
+aes로 그룹을 하나로 묶어버리는 케이스인데,
+
+```{r}
+ggplot(gpa, mapping = aes(x = hsGPA, y = colGPA, color = as.factor(male), group = 1)) +  
+  geom_point() + 
+  geom_jitter(width = 0.2) +  
+  geom_smooth(method = "lm")  
+```
+
+# 11/20일 수업
+
+-   회귀분석을 하고 있다.
+-   x가 y를 얼마나 잘 설명하고 있는지 알고 싶다면, x이외의 변수들은 모두 맞추는 작업이 필요함. -\> 즉 이걸 "통제" 라고 하는데, 회귀식에 집어 넣는 것이 그것이다.
+
+$$
+y_i = \beta_0 +\beta_1 x_i + \gamma_0 z_i + e_i
+$$ - 즉 이처럼 z 변수를 집어넣는다.
+
+-고등학고 성적이 대학 성적을 얼마나 설명하는지를 보인다. $$ 
+colGPA_i = a + b \times hsGPA_i + e_i
+$$
+
+```{r}
+str(gpa)
+```
+
+```{r}
+lm.hsGPA <- lm(colGPA ~ hsGPA, data = gpa)
+lm.ACT <- lm(colGPA ~ hsGPA + ACT, data = gpa)
+stargazer:: stargazer(lm.hsGPA,
+                      lm.ACT,
+                      type = "text",
+                      keep.stat = c("n", "rsq"))
+```
+
+-   통제변수 2\~4개 정도 추가하고,
+-   그 이유에 대해서 설명해보시오.
+
+```{r}
+str(gpa)
+lm.tst <- lm(colGPA ~ hsGPA + PC + alcohol)
+stargazer::stargazer(lm.hsGPA,
+                     lm.ACT,
+                     lm.tst,
+                     type = "text",
+                     keep.stat = c("n", "rsq"))
+```
+
+## regression의 활용도에 대한...
+
+-   "causuality" -\> 순수 경제학은 이 문제를 보통 푼다
+-   그러나 최근에는 아래와 같은 문제를 많이 푼다
+-   "prediction"
+-   "forecasting"
+
+우산 사람의 수와 비가 올 확률은 corr , 그러나 인과관계라고 볼 수는 없다. -\> forecasting 에서는 인과관계가 중요하지 않다. 정답을 고르는 것 만이 목적 -\> 반대로 causuality의 문제를 이야기 할때는 반대로 엄격한 기준에서 인과관계를 확인하는 것이 중요하다
+
+# forecasting 의 문제에 대한 이야기
+
+1.  회귀모형을 이용한 machine learning
+
+### 1. 목적
+
+-   machine learning의 목적은 prediction 아래와 같이 주택가격을 예측하는 모형을 만들 것이다.
+
+$$
+y_i = \beta_0 + \beta_1 x_i +  \beta_2 x_2i + \cdots + \beta_{ki} + \epsilon_i
+$$
+
+### 2. 패키지 설치
+
+install.packages("caret") install.packages("MASS")
+
+```{r}
+library(caret)
+library(MASS)
+library(tidyverse)
+
+# data 땡기기
+data("Boston")
+head(Boston)
+str(Boston)
+```
+
+### 3. 편집 및 train
+
+변수 설정 - $y$ : 주택가격 - $x$ : 지역 혹은 주택의 특성
+
+-   여기서는 예측의 문제를 풀기 때문에 추정한다고 표현하지 않고 훈련한다고 표현한다.
+    -   또한 여기서부터는 머신러닝의 결과에 대한 결과를 해석해야 하기 때문에, train data 와 test data 로 구분한다.
+    -   partition 을 하게 되는데 보통 3:7 정도로 구성하는 경우가 많다.
+-   data를 train 데이터와 test 데이터로 구분한다.(partition)
+
+```{r}
+set.seed(12345)
+library(caret)
+
+traininex<- createDataPartition(Boston$medv,
+                           p = 0.8,
+                           list = FALSE)
+train_data <- Boston[traininex, ]
+test_data <- Boston[-traininex, ]
+
+head(train_data)
+```
+
+-   모든 features 를 이용해서 medv 를 에측하는 모형을 훈련시킨다.
+
+```{r}
+lm.all <- lm(medv ~., data = train_data)
+summary(lm.all)
+```
+
+### 4. 예측
+
+```{r}
+prediction <-  predict(lm.all, newdata = test_data)
+
+```
+
+-   실제 집값 medv, 모형이 예측한 집값
+-   두변수를 이용해서 새로운 데이터 프래이밍
+
+```{r}
+result <-  data.frame(
+  actual = test_data$medv,
+  predicted = prediction 
+)
+str(result)
+```
+
+```{r}
+theme_set(theme_grey(base_family='NanumGothic'))
+
+result |> 
+  ggplot(aes(x = actual, y = predicted )) +
+  geom_point() + 
+  geom_abline(intercept = 0 , slope = 1, color = "red", linetype = "dashed")
+  labs( 
+    x = "실제가격", y = "예측가격"
+    )
+```
+
+-   실측값과 예측값 사이의 간격을 최소화 하고자 한다.
+-   rmse 구하는 과정인 것 같음
+
+### 5. 모형의 예측성과에 대한 평가
+
+-   성능, 적합도, 모델의 설정을 평가
+
+-   mean squared error $$
+    MSE = \frac{1}{n} \sum_{i=1}^n (y_i - \hat{y}_i)^2
+    $$
+
+-   Root mean squared error
+
+$$
+RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^n (y_i - \hat{y}_i)^2}
+$$ - 내 예측치에 대한 MSE와 RMSE
+
+```{r}
+# MSE
+mse <- mean((result$actual - result$predicted)^2)
+
+# RMSE
+rmse <- sqrt(mse)
+
+print(paste("MSE:", mse))
+print(paste("RMSE:", rmse))
+
+```
+
+-   과적합에 대한 설명도 함. ; 간단하고 단순한 방향으로 회귀선을 그으라는 거시다.. ; 모형을 막 막 복잡하게 막 막 막 막 그렇게 막 변수를 막 ㅋㅋ 추가하면 복잡해서 overfitting 올 수도 있다능.
+
+### 6. 모델을 고르는 경우
+
+-특성변수의 선택\~ 🐶🐣🐹 - 3가지 방법 (과적합을 피하기 위한) - forward : 하나씩 넣어보기 \~ - backward : 하나씩 뺴보기 \~ - both : 둘다 👙 - 최근애는 정규화라는 방식을 자주 사용한다.
