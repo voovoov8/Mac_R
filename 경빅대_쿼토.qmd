@@ -52,7 +52,7 @@ $$
 
 -   $e$ 는 오차할 , 설명되지 않는 부분
 
--   $x$ rk 1개 이면 단순회귀, $x$ 가 여러개이면 다중회귀
+$x$ rk 1개 이면 단순회귀, $x$ 가 여러개이면 다중회귀
 
 -   아래 오차제곱의 합이 가장 작아지도록 $beta_0, \beta_1$ 을 정한다.
 
@@ -67,6 +67,7 @@ $$
 
 ```{r}
 library(tidyverse)
+setwd("/Users/yunchaeho/r_space")
 ceosal<- readr::read_csv("ceosal1.csv", 
                          col_name= TRUE)
 ```
@@ -209,9 +210,7 @@ ceosal |>
     \log(salary_i) =  a + b\log(sales_i) + e_i 
     $$
 
-```{r}
-str(ceosal)
-```
+{r} str(ceosal)
 
 ```{r}
 lm.sales <- lm(lsalary ~ lsales, data = ceosal)
@@ -226,7 +225,7 @@ stargazer( lm.sales,
 
 ```{r}
 rm(list = ls())
-gpa<- read.csv("gpa1.csv",
+gpa<- read.csv("/Users/yunchaeho/r_space/gpa1.csv",
                 header = TRUE,
                 sep = "\t")
 attach(gpa)

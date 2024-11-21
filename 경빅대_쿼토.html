@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="yoon">
+
+<title>경빅대_쿼토</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="경빅대_쿼토_files/libs/clipboard/clipboard.min.js"></script>
+<script src="경빅대_쿼토_files/libs/quarto-html/quarto.js"></script>
+<script src="경빅대_쿼토_files/libs/quarto-html/popper.min.js"></script>
+<script src="경빅대_쿼토_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="경빅대_쿼토_files/libs/quarto-html/anchor.min.js"></script>
+<link href="경빅대_쿼토_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="경빅대_쿼토_files/libs/quarto-html/quarto-syntax-highlighting-29e2c20b02301cfff04dc8050bf30c7e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="경빅대_쿼토_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="경빅대_쿼토_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="경빅대_쿼토_files/libs/bootstrap/bootstrap-e19dc0c07aeef78048e587c3f1edba7a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">경빅대_쿼토</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>yoon </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="쿼토의-개요-heading" class="level1">
+<h1>쿼토의 개요 (heading)</h1>
+<p>쿼토는 데이터 사이언스에서 많이 사용되는 문서 작성 프로그램입니다.</p>
+<section id="사용-목적" class="level2">
+<h2 class="anchored" data-anchor-id="사용-목적">사용 목적</h2>
+<p>사용 목적은 다음과 같습니다. - 문서 관리 - 정보 교환</p>
+</section>
+<section id="데이터-분석" class="level2">
+<h2 class="anchored" data-anchor-id="데이터-분석">데이터 분석</h2>
+<p>auto.csv 데이터를 불러들입니다.</p>
+<p>code-chunk를 삽입합니다.</p>
+<p>ggplot2를 이용해서 산포도를 그려보겠습니다.</p>
+<p>가로축은 mpg, 세로축은 price를 그려보겠습니다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_grey</span>(<span class="at">base_family=</span><span class="st">'NanumGothic'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br> <br> <br> <br> <br> <br></p>
+</section>
+</section>
+<section id="회귀분석" class="level1">
+<h1>회귀분석</h1>
+<section id="ols-의-이론적-이해" class="level2">
+<h2 class="anchored" data-anchor-id="ols-의-이론적-이해">ols 의 이론적 이해</h2>
+<p><span id="eq-regression"><span class="math display">\[
+y_i = \beta_0 + \beta_1 x_i + e_i
+\tag{1}\]</span></span></p>
+<p><span class="math display">\[
+y_i = \beta_0 +\beta_1 x_i + e_i
+\]</span></p>
+<ul>
+<li><p><span class="math inline">\(=\)</span>를 중심으로 왼쪽에 있는 변수 <span class="math inline">\(y\)</span>, 종속변수 혹은 피설면변수</p></li>
+<li><p><span class="math inline">\(=\)</span>를 중심으로 오른쪽에 있는 변수 <span class="math inline">\(y\)</span>, 종속변수 혹은 피설면변수 <span class="math inline">\(x\)</span>, 독립변수 혹은 설명변수</p></li>
+<li><p><span class="math inline">\(e\)</span> 는 오차할 , 설명되지 않는 부분</p></li>
+</ul>
+<p><span class="math inline">\(x\)</span> rk 1개 이면 단순회귀, <span class="math inline">\(x\)</span> 가 여러개이면 다중회귀</p>
+<ul>
+<li>아래 오차제곱의 합이 가장 작아지도록 <span class="math inline">\(beta_0, \beta_1\)</span> 을 정한다.</li>
+</ul>
+<p><span class="math display">\[
+\sum_{i=1}^ {n} e_i^2
+\]</span></p>
+<ul>
+<li>ols 라고 한다. (위의 공식을 외우란다)</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ lubridate 1.9.3     ✔ tibble    3.2.1
+✔ purrr     1.0.2     ✔ tidyr     1.3.0
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"/Users/yunchaeho/r_space"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>ceosal<span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"ceosal1.csv"</span>, </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                         <span class="at">col_name=</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 209 Columns: 12
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+dbl (12): salary, pcsalary, sales, roe, pcroe, ros, indus, finance, consprod...
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<ul>
+<li>기업의 CEO의 연봉에 대한 데이터</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(ceosal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>spc_tbl_ [209 × 12] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+ $ salary  : num [1:209] 1095 1001 1122 578 1368 ...
+ $ pcsalary: num [1:209] 20 32 9 -9 7 5 10 7 16 5 ...
+ $ sales   : num [1:209] 27595 9958 6126 16246 21783 ...
+ $ roe     : num [1:209] 14.1 10.9 23.5 5.9 13.8 20 16.4 16.3 10.5 26.3 ...
+ $ pcroe   : num [1:209] 106.4 -30.6 -16.3 -25.7 -3 ...
+ $ ros     : num [1:209] 191 13 14 -21 56 55 62 44 37 37 ...
+ $ indus   : num [1:209] 1 1 1 1 1 1 1 1 1 1 ...
+ $ finance : num [1:209] 0 0 0 0 0 0 0 0 0 0 ...
+ $ consprod: num [1:209] 0 0 0 0 0 0 0 0 0 0 ...
+ $ utility : num [1:209] 0 0 0 0 0 0 0 0 0 0 ...
+ $ lsalary : num [1:209] 7 6.91 7.02 6.36 7.22 ...
+ $ lsales  : num [1:209] 10.23 9.21 8.72 9.7 9.99 ...
+ - attr(*, "spec")=
+  .. cols(
+  ..   salary = col_double(),
+  ..   pcsalary = col_double(),
+  ..   sales = col_double(),
+  ..   roe = col_double(),
+  ..   pcroe = col_double(),
+  ..   ros = col_double(),
+  ..   indus = col_double(),
+  ..   finance = col_double(),
+  ..   consprod = col_double(),
+  ..   utility = col_double(),
+  ..   lsalary = col_double(),
+  ..   lsales = col_double()
+  .. )
+ - attr(*, "problems")=&lt;externalptr&gt; </code></pre>
+</div>
+</div>
+<ul>
+<li>salary 를 수익률 roe 가 설명할 수 있는가? 또는 얼마나 설명하는가? 왜? 나는 roe, 즉 마진/ equity 가 노동의 대가를 설명할 수 있다고 보기 때문 다시 말하면, 벌어들이는 돈중 순수한 이익이 노동의 대가의 scales 로 산출될 수 있는 것일까?</li>
+</ul>
+<p><span class="math display">\[
+salary_i = a + b \times roe_i = e_i
+\]</span></p>
+<p><br></p>
+<ul>
+<li>귀무가설 null hupothesis <span class="math inline">\(H_0\)</span> <br> <span class="math display">\[
+H_0 : b = 0
+\]</span></li>
+</ul>
+<p><br></p>
+</section>
+<section id="그림-그려보기" class="level2">
+<h2 class="anchored" data-anchor-id="그림-그려보기">그림 그려보기</h2>
+<ul>
+<li>Roe 가 가로축, salary가 세로축인 산포도</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ceosal, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>roe, <span class="at">y =</span> sales )) <span class="sc">+</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"ROE 와 salary"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="경빅대_쿼토_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">display.brewer.all</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="경빅대_쿼토_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br> - Roe 가 가로축, salary가 세로축인 산포도 indus 별로 다른색</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ceosal, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x=</span>roe, <span class="at">y =</span> sales, <span class="at">color =</span> <span class="fu">as.factor</span>(indus))) <span class="sc">+</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"ROE 와 salary"</span>) <span class="sc">+</span> </span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_family=</span><span class="st">'NanumGothic'</span>) <span class="sc">+</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span>  <span class="st">"Blues"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="경빅대_쿼토_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>as.factor를 활용해서 1또는 0의 변수로 인지시킨다.</li>
+</ul>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ceosal, <span class="at">mapping =</span> <span class="fu">aes</span>( <span class="at">x =</span> roe, <span class="at">y =</span> salary )) <span class="sc">+</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>              <span class="at">se =</span><span class="cn">TRUE</span>)<span class="sc">+</span> </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>( <span class="at">title =</span> <span class="st">"산포도와 lfit"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="경빅대_쿼토_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br> - 모형의 계수 <span class="math inline">\(a, b\)</span> 를 OLS로 추정한다</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>lm.roe <span class="ot">&lt;-</span> <span class="fu">lm</span>(salary <span class="sc">~</span>roe, <span class="at">data =</span> ceosal)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm.roe)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = salary ~ roe, data = ceosal)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-1160.2  -526.0  -254.0   138.8 13499.9 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)   963.19     213.24   4.517 1.05e-05 ***
+roe            18.50      11.12   1.663   0.0978 .  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 1367 on 207 degrees of freedom
+Multiple R-squared:  0.01319,   Adjusted R-squared:  0.008421 
+F-statistic: 2.767 on 1 and 207 DF,  p-value: 0.09777</code></pre>
+</div>
+</div>
+<p><br></p>
+<p>“roe가 1 들어났을때, 셀러리가 18.5 늘어난다.”고 해석한다. a는 roe = 10 , b는 roe = 11 이라고 했을때 우린 이걸 보고 b가 a보다 salary 가 18.5 만큼 더 크겠구나 하고 해석한다는 것.</p>
+<p>roe가 salary 를 잘 설명 못하는데( 유의수준 ) 따라서 귀무가설을 기각할 수가 없음.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("stargazer")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>회귀분석 결과 통계에 대한 고품질 패키지 “stargazer”</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stargazer)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Please cite as: </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code> Hlavac, Marek (2022). stargazer: Well-Formatted Regression and Summary Statistics Tables.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code> R package version 5.2.3. https://CRAN.R-project.org/package=stargazer </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>(lm.roe, </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">type =</span><span class="st">"text"</span>,</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">keep.stat =</span> <span class="fu">c</span>(<span class="st">"n"</span>, <span class="st">"rsq"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+========================================
+                 Dependent variable:    
+             ---------------------------
+                       salary           
+----------------------------------------
+roe                    18.501*          
+                      (11.123)          
+                                        
+Constant             963.191***         
+                      (213.240)         
+                                        
+----------------------------------------
+Observations             209            
+R2                      0.013           
+========================================
+Note:        *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+</div>
+</div>
+<ul>
+<li>1종 오류(false positive) : 0인데 0이 아니라고 하는 오류</li>
+<li>유의수준 5%, 기각역 2 (1.96), 신뢰수준 95%</li>
+</ul>
+</section>
+</section>
+<section id="강의내용" class="level1">
+<h1>11/13 강의내용</h1>
+<ul>
+<li><p>roe와 임금의 관계로 돌아와서</p></li>
+<li><p>roe 대신에 다른 설명변수, 예를 들어서 sales, 매출액</p></li>
+<li><p>sales 하고 roe 와의 상관관계</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">cor</span>(ceosal<span class="sc">$</span>sales, ceosal<span class="sc">$</span>salary))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1198695</code></pre>
+</div>
+</div>
+<section id="그림-그려보기-1" class="level2">
+<h2 class="anchored" data-anchor-id="그림-그려보기-1">그림 그려보기</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ceosal, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> sales, <span class="at">y =</span> salary)) <span class="sc">+</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"blue"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="경빅대_쿼토_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>sales 는 &lt;25000 이고 salary &lt;5000인 기업만 대상으로 그려보자 geom_rug()</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(ceosal, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> sales, <span class="at">y =</span> salary)) <span class="sc">+</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">25000</span>) <span class="sc">+</span> </span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="dv">5000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 11 rows containing non-finite outside the scale range
+(`stat_smooth()`).</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 11 rows containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="경빅대_쿼토_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>이 방식도 있다.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"로그를 취한 분포를 확인하는 경우"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "로그를 취한 분포를 확인하는 경우"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>ceosal <span class="sc">|&gt;</span>  </span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(sales <span class="sc">&lt;</span> <span class="dv">25000</span> <span class="sc">&amp;</span> salary <span class="sc">&lt;</span> <span class="dv">5000</span>) <span class="sc">|&gt;</span>  </span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">log_sales =</span> <span class="fu">log</span>(sales), <span class="at">log_salary =</span> <span class="fu">log</span>(salary)) <span class="sc">|&gt;</span>  </span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> log_sales, <span class="at">y =</span> log_salary)) <span class="sc">+</span>  </span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_rug</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="경빅대_쿼토_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>회귀모형을 다음과 같이 바꾼다 <span class="math display">\[
+\log(salary_i) =  a + b\log(sales_i) + e_i
+\]</span></li>
+</ul>
+<p>{r} str(ceosal)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>lm.sales <span class="ot">&lt;-</span> <span class="fu">lm</span>(lsalary <span class="sc">~</span> lsales, <span class="at">data =</span> ceosal)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="fu">stargazer</span>( lm.sales,</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">type =</span> <span class="st">"text"</span>,</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">keep.stat =</span> <span class="fu">c</span>(<span class="st">"n"</span>, <span class="st">"rsq"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+========================================
+                 Dependent variable:    
+             ---------------------------
+                       lsalary          
+----------------------------------------
+lsales                0.257***          
+                       (0.035)          
+                                        
+Constant              4.822***          
+                       (0.288)          
+                                        
+----------------------------------------
+Observations             209            
+R2                      0.211           
+========================================
+Note:        *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+</div>
+</div>
+<ul>
+<li>이걸 해석하는 방식이 중요하겠다 y의 x에 대한 탄력성이다. 즉 x가 1% 변했을때 y가 몇프로 변하느냐를 측정하는 방식</li>
+</ul>
+<p>여기까지가 <span class="math inline">\(x\)</span> 가 하나인 simple regression</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>gpa<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"/Users/yunchaeho/r_space/gpa1.csv"</span>,</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">header =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">sep =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(gpa)</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(gpa)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   141 obs. of  29 variables:
+ $ age     : int  21 21 20 19 20 20 22 22 22 19 ...
+ $ soph    : int  0 0 0 1 0 0 0 0 0 1 ...
+ $ junior  : int  0 0 1 0 1 0 0 0 0 0 ...
+ $ senior  : int  1 1 0 0 0 1 0 0 0 0 ...
+ $ senior5 : int  0 0 0 0 0 0 1 1 1 0 ...
+ $ male    : int  0 0 0 1 0 1 0 0 0 0 ...
+ $ campus  : int  0 0 0 1 0 1 0 0 0 0 ...
+ $ business: int  1 1 1 1 1 1 1 0 0 1 ...
+ $ engineer: int  0 0 0 0 0 0 0 0 0 0 ...
+ $ colGPA  : num  3 3.4 3 3.5 3.6 ...
+ $ hsGPA   : num  3 3.2 3.6 3.5 3.9 ...
+ $ ACT     : int  21 24 26 27 28 25 25 22 21 27 ...
+ $ job19   : int  0 0 1 1 0 0 0 1 1 1 ...
+ $ job20   : int  1 1 0 0 1 0 0 0 0 0 ...
+ $ drive   : int  1 1 0 0 0 0 0 1 1 0 ...
+ $ bike    : int  0 0 0 0 1 0 1 0 0 0 ...
+ $ walk    : int  0 0 1 1 0 1 0 0 0 1 ...
+ $ voluntr : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ PC      : int  0 0 0 0 0 0 0 1 0 1 ...
+ $ greek   : int  0 0 0 0 0 0 1 0 0 0 ...
+ $ car     : int  1 1 1 0 1 1 1 0 1 0 ...
+ $ siblings: int  1 0 1 1 1 1 1 1 1 1 ...
+ $ bgfriend: int  0 1 0 0 1 0 0 1 1 0 ...
+ $ clubs   : int  0 1 1 0 0 0 1 0 1 1 ...
+ $ skipped : num  2 0 0 0 0 0 0 3 2 0.5 ...
+ $ alcohol : num  1 1 1 0 1.5 0 2 3 2.5 0.75 ...
+ $ gradMI  : int  1 1 1 0 1 0 1 1 1 1 ...
+ $ fathcoll: int  0 1 1 0 1 1 0 1 1 0 ...
+ $ mothcoll: int  0 1 1 0 0 0 1 1 1 1 ...</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>hsgpa colgpa 의 상관관계를 산포도로 그리되 male 에 따라서 다른색으로</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gpa, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> hsGPA , colGPA, <span class="at">color=</span> <span class="fu">as.factor</span>(male))) <span class="sc">+</span></span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="경빅대_쿼토_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>자 위와 같은 방법에서는 특정 점에 여러개 찍었을때 확인할 수 있는 방법이 없다 해결법 1. 색아주 연하게 해서 겹치면 찐하게 되는 방식 2. jitter</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gpa, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> hsGPA , colGPA, <span class="at">color=</span> <span class="fu">as.factor</span>(male))) <span class="sc">+</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="경빅대_쿼토_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>geom_point: na.rm = FALSE
+stat_identity: na.rm = FALSE
+position_jitter </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gpa, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> hsGPA, <span class="at">y =</span> colGPA, <span class="at">color =</span> <span class="fu">as.factor</span>(male))) <span class="sc">+</span>  </span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span>  </span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="fu">aes</span>(<span class="at">group =</span> <span class="dv">1</span>), <span class="at">se =</span> <span class="cn">FALSE</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The following aesthetics were dropped during statistical transformation:
+colour.
+ℹ This can happen when ggplot fails to infer the correct grouping structure in
+  the data.
+ℹ Did you forget to specify a `group` aesthetic or to convert a numerical
+  variable into a factor?</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="경빅대_쿼토_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>aes로 그룹을 하나로 묶어버리는 케이스인데,</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gpa, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> hsGPA, <span class="at">y =</span> colGPA, <span class="at">color =</span> <span class="fu">as.factor</span>(male), <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span>  </span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span>  </span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The following aesthetics were dropped during statistical transformation:
+colour.
+ℹ This can happen when ggplot fails to infer the correct grouping structure in
+  the data.
+ℹ Did you forget to specify a `group` aesthetic or to convert a numerical
+  variable into a factor?</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="경빅대_쿼토_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="일-수업" class="level1">
+<h1>11/20일 수업</h1>
+<ul>
+<li>회귀분석을 하고 있다.</li>
+<li>x가 y를 얼마나 잘 설명하고 있는지 알고 싶다면, x이외의 변수들은 모두 맞추는 작업이 필요함. -&gt; 즉 이걸 “통제” 라고 하는데, 회귀식에 집어 넣는 것이 그것이다.</li>
+</ul>
+<p><span class="math display">\[
+y_i = \beta_0 +\beta_1 x_i + \gamma_0 z_i + e_i
+\]</span> - 즉 이처럼 z 변수를 집어넣는다.</p>
+<p>-고등학고 성적이 대학 성적을 얼마나 설명하는지를 보인다. <span class="math display">\[
+colGPA_i = a + b \times hsGPA_i + e_i
+\]</span></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(gpa)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   141 obs. of  29 variables:
+ $ age     : int  21 21 20 19 20 20 22 22 22 19 ...
+ $ soph    : int  0 0 0 1 0 0 0 0 0 1 ...
+ $ junior  : int  0 0 1 0 1 0 0 0 0 0 ...
+ $ senior  : int  1 1 0 0 0 1 0 0 0 0 ...
+ $ senior5 : int  0 0 0 0 0 0 1 1 1 0 ...
+ $ male    : int  0 0 0 1 0 1 0 0 0 0 ...
+ $ campus  : int  0 0 0 1 0 1 0 0 0 0 ...
+ $ business: int  1 1 1 1 1 1 1 0 0 1 ...
+ $ engineer: int  0 0 0 0 0 0 0 0 0 0 ...
+ $ colGPA  : num  3 3.4 3 3.5 3.6 ...
+ $ hsGPA   : num  3 3.2 3.6 3.5 3.9 ...
+ $ ACT     : int  21 24 26 27 28 25 25 22 21 27 ...
+ $ job19   : int  0 0 1 1 0 0 0 1 1 1 ...
+ $ job20   : int  1 1 0 0 1 0 0 0 0 0 ...
+ $ drive   : int  1 1 0 0 0 0 0 1 1 0 ...
+ $ bike    : int  0 0 0 0 1 0 1 0 0 0 ...
+ $ walk    : int  0 0 1 1 0 1 0 0 0 1 ...
+ $ voluntr : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ PC      : int  0 0 0 0 0 0 0 1 0 1 ...
+ $ greek   : int  0 0 0 0 0 0 1 0 0 0 ...
+ $ car     : int  1 1 1 0 1 1 1 0 1 0 ...
+ $ siblings: int  1 0 1 1 1 1 1 1 1 1 ...
+ $ bgfriend: int  0 1 0 0 1 0 0 1 1 0 ...
+ $ clubs   : int  0 1 1 0 0 0 1 0 1 1 ...
+ $ skipped : num  2 0 0 0 0 0 0 3 2 0.5 ...
+ $ alcohol : num  1 1 1 0 1.5 0 2 3 2.5 0.75 ...
+ $ gradMI  : int  1 1 1 0 1 0 1 1 1 1 ...
+ $ fathcoll: int  0 1 1 0 1 1 0 1 1 0 ...
+ $ mothcoll: int  0 1 1 0 0 0 1 1 1 1 ...</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>lm.hsGPA <span class="ot">&lt;-</span> <span class="fu">lm</span>(colGPA <span class="sc">~</span> hsGPA, <span class="at">data =</span> gpa)</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>lm.ACT <span class="ot">&lt;-</span> <span class="fu">lm</span>(colGPA <span class="sc">~</span> hsGPA <span class="sc">+</span> ACT, <span class="at">data =</span> gpa)</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>stargazer<span class="sc">::</span> <span class="fu">stargazer</span>(lm.hsGPA,</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>                      lm.ACT,</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>                      <span class="at">type =</span> <span class="st">"text"</span>,</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>                      <span class="at">keep.stat =</span> <span class="fu">c</span>(<span class="st">"n"</span>, <span class="st">"rsq"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+=========================================
+                 Dependent variable:     
+             ----------------------------
+                        colGPA           
+                  (1)            (2)     
+-----------------------------------------
+hsGPA           0.482***      0.453***   
+                (0.090)        (0.096)   
+                                         
+ACT                             0.009    
+                               (0.011)   
+                                         
+Constant        1.415***      1.286***   
+                (0.307)        (0.341)   
+                                         
+-----------------------------------------
+Observations      141            141     
+R2               0.172          0.176    
+=========================================
+Note:         *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+</div>
+</div>
+<ul>
+<li>통제변수 2~4개 정도 추가하고,</li>
+<li>그 이유에 대해서 설명해보시오.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(gpa)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   141 obs. of  29 variables:
+ $ age     : int  21 21 20 19 20 20 22 22 22 19 ...
+ $ soph    : int  0 0 0 1 0 0 0 0 0 1 ...
+ $ junior  : int  0 0 1 0 1 0 0 0 0 0 ...
+ $ senior  : int  1 1 0 0 0 1 0 0 0 0 ...
+ $ senior5 : int  0 0 0 0 0 0 1 1 1 0 ...
+ $ male    : int  0 0 0 1 0 1 0 0 0 0 ...
+ $ campus  : int  0 0 0 1 0 1 0 0 0 0 ...
+ $ business: int  1 1 1 1 1 1 1 0 0 1 ...
+ $ engineer: int  0 0 0 0 0 0 0 0 0 0 ...
+ $ colGPA  : num  3 3.4 3 3.5 3.6 ...
+ $ hsGPA   : num  3 3.2 3.6 3.5 3.9 ...
+ $ ACT     : int  21 24 26 27 28 25 25 22 21 27 ...
+ $ job19   : int  0 0 1 1 0 0 0 1 1 1 ...
+ $ job20   : int  1 1 0 0 1 0 0 0 0 0 ...
+ $ drive   : int  1 1 0 0 0 0 0 1 1 0 ...
+ $ bike    : int  0 0 0 0 1 0 1 0 0 0 ...
+ $ walk    : int  0 0 1 1 0 1 0 0 0 1 ...
+ $ voluntr : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ PC      : int  0 0 0 0 0 0 0 1 0 1 ...
+ $ greek   : int  0 0 0 0 0 0 1 0 0 0 ...
+ $ car     : int  1 1 1 0 1 1 1 0 1 0 ...
+ $ siblings: int  1 0 1 1 1 1 1 1 1 1 ...
+ $ bgfriend: int  0 1 0 0 1 0 0 1 1 0 ...
+ $ clubs   : int  0 1 1 0 0 0 1 0 1 1 ...
+ $ skipped : num  2 0 0 0 0 0 0 3 2 0.5 ...
+ $ alcohol : num  1 1 1 0 1.5 0 2 3 2.5 0.75 ...
+ $ gradMI  : int  1 1 1 0 1 0 1 1 1 1 ...
+ $ fathcoll: int  0 1 1 0 1 1 0 1 1 0 ...
+ $ mothcoll: int  0 1 1 0 0 0 1 1 1 1 ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>lm.tst <span class="ot">&lt;-</span> <span class="fu">lm</span>(colGPA <span class="sc">~</span> hsGPA <span class="sc">+</span> PC <span class="sc">+</span> alcohol)</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a>stargazer<span class="sc">::</span><span class="fu">stargazer</span>(lm.hsGPA,</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a>                     lm.ACT,</span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a>                     lm.tst,</span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a>                     <span class="at">type =</span> <span class="st">"text"</span>,</span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">keep.stat =</span> <span class="fu">c</span>(<span class="st">"n"</span>, <span class="st">"rsq"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+==========================================
+                  Dependent variable:     
+             -----------------------------
+                        colGPA            
+                (1)       (2)       (3)   
+------------------------------------------
+hsGPA        0.482***  0.453***  0.476*** 
+              (0.090)   (0.096)   (0.088) 
+                                          
+ACT                      0.009            
+                        (0.011)           
+                                          
+PC                               0.160*** 
+                                  (0.057) 
+                                          
+alcohol                            0.013  
+                                  (0.021) 
+                                          
+Constant     1.415***  1.286***  1.349*** 
+              (0.307)   (0.341)   (0.305) 
+                                          
+------------------------------------------
+Observations    141       141       141   
+R2             0.172     0.176     0.218  
+==========================================
+Note:          *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</code></pre>
+</div>
+</div>
+<section id="regression의-활용도에-대한" class="level2">
+<h2 class="anchored" data-anchor-id="regression의-활용도에-대한">regression의 활용도에 대한…</h2>
+<ul>
+<li>“causuality” -&gt; 순수 경제학은 이 문제를 보통 푼다</li>
+<li>그러나 최근에는 아래와 같은 문제를 많이 푼다</li>
+<li>“prediction”</li>
+<li>“forecasting”</li>
+</ul>
+<p>우산 사람의 수와 비가 올 확률은 corr , 그러나 인과관계라고 볼 수는 없다. -&gt; forecasting 에서는 인과관계가 중요하지 않다. 정답을 고르는 것 만이 목적 -&gt; 반대로 causuality의 문제를 이야기 할때는 반대로 엄격한 기준에서 인과관계를 확인하는 것이 중요하다</p>
+</section>
+</section>
+<section id="forecasting-의-문제에-대한-이야기" class="level1">
+<h1>forecasting 의 문제에 대한 이야기</h1>
+<ol type="1">
+<li>회귀모형을 이용한 machine learning</li>
+</ol>
+<section id="목적" class="level3">
+<h3 class="anchored" data-anchor-id="목적">1. 목적</h3>
+<ul>
+<li>machine learning의 목적은 prediction 아래와 같이 주택가격을 예측하는 모형을 만들 것이다.</li>
+</ul>
+<p><span class="math display">\[
+y_i = \beta_0 + \beta_1 x_i +  \beta_2 x_2i + \cdots + \beta_{ki} + \epsilon_i
+\]</span></p>
+</section>
+<section id="패키지-설치" class="level3">
+<h3 class="anchored" data-anchor-id="패키지-설치">2. 패키지 설치</h3>
+<p>install.packages(“caret”) install.packages(“MASS”)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: lattice</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'caret'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:purrr':
+
+    lift</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'MASS'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:dplyr':
+
+    select</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb69-2"><a href="#cb69-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb69-3"><a href="#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="co"># data 땡기기</span></span>
+<span id="cb69-4"><a href="#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"Boston"</span>)</span>
+<span id="cb69-5"><a href="#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(Boston)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     crim zn indus chas   nox    rm  age    dis rad tax ptratio  black lstat
+1 0.00632 18  2.31    0 0.538 6.575 65.2 4.0900   1 296    15.3 396.90  4.98
+2 0.02731  0  7.07    0 0.469 6.421 78.9 4.9671   2 242    17.8 396.90  9.14
+3 0.02729  0  7.07    0 0.469 7.185 61.1 4.9671   2 242    17.8 392.83  4.03
+4 0.03237  0  2.18    0 0.458 6.998 45.8 6.0622   3 222    18.7 394.63  2.94
+5 0.06905  0  2.18    0 0.458 7.147 54.2 6.0622   3 222    18.7 396.90  5.33
+6 0.02985  0  2.18    0 0.458 6.430 58.7 6.0622   3 222    18.7 394.12  5.21
+  medv
+1 24.0
+2 21.6
+3 34.7
+4 33.4
+5 36.2
+6 28.7</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(Boston)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   506 obs. of  14 variables:
+ $ crim   : num  0.00632 0.02731 0.02729 0.03237 0.06905 ...
+ $ zn     : num  18 0 0 0 0 0 12.5 12.5 12.5 12.5 ...
+ $ indus  : num  2.31 7.07 7.07 2.18 2.18 2.18 7.87 7.87 7.87 7.87 ...
+ $ chas   : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ nox    : num  0.538 0.469 0.469 0.458 0.458 0.458 0.524 0.524 0.524 0.524 ...
+ $ rm     : num  6.58 6.42 7.18 7 7.15 ...
+ $ age    : num  65.2 78.9 61.1 45.8 54.2 58.7 66.6 96.1 100 85.9 ...
+ $ dis    : num  4.09 4.97 4.97 6.06 6.06 ...
+ $ rad    : int  1 2 2 3 3 3 5 5 5 5 ...
+ $ tax    : num  296 242 242 222 222 222 311 311 311 311 ...
+ $ ptratio: num  15.3 17.8 17.8 18.7 18.7 18.7 15.2 15.2 15.2 15.2 ...
+ $ black  : num  397 397 393 395 397 ...
+ $ lstat  : num  4.98 9.14 4.03 2.94 5.33 ...
+ $ medv   : num  24 21.6 34.7 33.4 36.2 28.7 22.9 27.1 16.5 18.9 ...</code></pre>
+</div>
+</div>
+</section>
+<section id="편집-및-train" class="level3">
+<h3 class="anchored" data-anchor-id="편집-및-train">3. 편집 및 train</h3>
+<p>변수 설정 - <span class="math inline">\(y\)</span> : 주택가격 - <span class="math inline">\(x\)</span> : 지역 혹은 주택의 특성</p>
+<ul>
+<li>여기서는 예측의 문제를 풀기 때문에 추정한다고 표현하지 않고 훈련한다고 표현한다.
+<ul>
+<li>또한 여기서부터는 머신러닝의 결과에 대한 결과를 해석해야 하기 때문에, train data 와 test data 로 구분한다.</li>
+<li>partition 을 하게 되는데 보통 3:7 정도로 구성하는 경우가 많다.</li>
+</ul></li>
+<li>data를 train 데이터와 test 데이터로 구분한다.(partition)</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">12345</span>)</span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>traininex<span class="ot">&lt;-</span> <span class="fu">createDataPartition</span>(Boston<span class="sc">$</span>medv,</span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">p =</span> <span class="fl">0.8</span>,</span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>                           <span class="at">list =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a>train_data <span class="ot">&lt;-</span> Boston[traininex, ]</span>
+<span id="cb73-8"><a href="#cb73-8" aria-hidden="true" tabindex="-1"></a>test_data <span class="ot">&lt;-</span> Boston[<span class="sc">-</span>traininex, ]</span>
+<span id="cb73-9"><a href="#cb73-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-10"><a href="#cb73-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(train_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     crim   zn indus chas   nox    rm  age    dis rad tax ptratio  black lstat
+2 0.02731  0.0  7.07    0 0.469 6.421 78.9 4.9671   2 242    17.8 396.90  9.14
+3 0.02729  0.0  7.07    0 0.469 7.185 61.1 4.9671   2 242    17.8 392.83  4.03
+4 0.03237  0.0  2.18    0 0.458 6.998 45.8 6.0622   3 222    18.7 394.63  2.94
+5 0.06905  0.0  2.18    0 0.458 7.147 54.2 6.0622   3 222    18.7 396.90  5.33
+6 0.02985  0.0  2.18    0 0.458 6.430 58.7 6.0622   3 222    18.7 394.12  5.21
+8 0.14455 12.5  7.87    0 0.524 6.172 96.1 5.9505   5 311    15.2 396.90 19.15
+  medv
+2 21.6
+3 34.7
+4 33.4
+5 36.2
+6 28.7
+8 27.1</code></pre>
+</div>
+</div>
+<ul>
+<li>모든 features 를 이용해서 medv 를 에측하는 모형을 훈련시킨다.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>lm.all <span class="ot">&lt;-</span> <span class="fu">lm</span>(medv <span class="sc">~</span>., <span class="at">data =</span> train_data)</span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm.all)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = medv ~ ., data = train_data)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-15.0843  -2.7781  -0.5494   1.6943  25.0247 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  3.765e+01  5.760e+00   6.537 1.95e-10 ***
+crim        -8.311e-02  4.796e-02  -1.733 0.083904 .  
+zn           3.717e-02  1.599e-02   2.325 0.020607 *  
+indus       -2.191e-04  6.845e-02  -0.003 0.997448    
+chas         2.864e+00  1.002e+00   2.858 0.004492 ** 
+nox         -1.683e+01  4.422e+00  -3.805 0.000165 ***
+rm           3.335e+00  4.688e-01   7.113 5.40e-12 ***
+age          8.175e-03  1.470e-02   0.556 0.578403    
+dis         -1.270e+00  2.259e-01  -5.623 3.57e-08 ***
+rad          2.971e-01  7.681e-02   3.868 0.000129 ***
+tax         -1.063e-02  4.269e-03  -2.490 0.013172 *  
+ptratio     -9.414e-01  1.508e-01  -6.244 1.11e-09 ***
+black        9.257e-03  3.073e-03   3.012 0.002759 ** 
+lstat       -5.688e-01  5.614e-02 -10.132  &lt; 2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 4.851 on 393 degrees of freedom
+Multiple R-squared:  0.709, Adjusted R-squared:  0.6993 
+F-statistic: 73.65 on 13 and 393 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+</section>
+<section id="예측" class="level3">
+<h3 class="anchored" data-anchor-id="예측">4. 예측</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a>prediction <span class="ot">&lt;-</span>  <span class="fu">predict</span>(lm.all, <span class="at">newdata =</span> test_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li>실제 집값 medv, 모형이 예측한 집값</li>
+<li>두변수를 이용해서 새로운 데이터 프래이밍</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span>  <span class="fu">data.frame</span>(</span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">actual =</span> test_data<span class="sc">$</span>medv,</span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">predicted =</span> prediction </span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   99 obs. of  2 variables:
+ $ actual   : num  24 22.9 19.9 20.2 15.6 16.6 19.3 19.7 31.6 22.2 ...
+ $ predicted: num  30.1 23.3 19.7 16.4 16 ...</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">theme_set</span>(<span class="fu">theme_grey</span>(<span class="at">base_family=</span><span class="st">'NanumGothic'</span>))</span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>result <span class="sc">|&gt;</span> </span>
+<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> actual, <span class="at">y =</span> predicted )) <span class="sc">+</span></span>
+<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb80-6"><a href="#cb80-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">intercept =</span> <span class="dv">0</span> , <span class="at">slope =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="경빅대_쿼토_files/figure-html/unnamed-chunk-32-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>( </span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"실제가격"</span>, <span class="at">y =</span> <span class="st">"예측가격"</span></span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>    )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$x
+[1] "실제가격"
+
+$y
+[1] "예측가격"
+
+attr(,"class")
+[1] "labels"</code></pre>
+</div>
+</div>
+<ul>
+<li>실측값과 예측값 사이의 간격을 최소화 하고자 한다.</li>
+<li>rmse 구하는 과정인 것 같음</li>
+</ul>
+</section>
+<section id="모형의-예측성과에-대한-평가" class="level3">
+<h3 class="anchored" data-anchor-id="모형의-예측성과에-대한-평가">5. 모형의 예측성과에 대한 평가</h3>
+<ul>
+<li><p>성능, 적합도, 모델의 설정을 평가</p></li>
+<li><p>mean squared error <span class="math display">\[
+MSE = \frac{1}{n} \sum_{i=1}^n (y_i - \hat{y}_i)^2
+\]</span></p></li>
+<li><p>Root mean squared error</p></li>
+</ul>
+<p><span class="math display">\[
+RMSE = \sqrt{\frac{1}{n} \sum_{i=1}^n (y_i - \hat{y}_i)^2}
+\]</span> - 내 예측치에 대한 MSE와 RMSE</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MSE</span></span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>mse <span class="ot">&lt;-</span> <span class="fu">mean</span>((result<span class="sc">$</span>actual <span class="sc">-</span> result<span class="sc">$</span>predicted)<span class="sc">^</span><span class="dv">2</span>)</span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a><span class="co"># RMSE</span></span>
+<span id="cb83-5"><a href="#cb83-5" aria-hidden="true" tabindex="-1"></a>rmse <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(mse)</span>
+<span id="cb83-6"><a href="#cb83-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-7"><a href="#cb83-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"MSE:"</span>, mse))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "MSE: 19.5594354717916"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"RMSE:"</span>, rmse))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "RMSE: 4.4226050549186"</code></pre>
+</div>
+</div>
+<ul>
+<li>과적합에 대한 설명도 함. ; 간단하고 단순한 방향으로 회귀선을 그으라는 거시다.. ; 모형을 막 막 복잡하게 막 막 막 막 그렇게 막 변수를 막 ㅋㅋ 추가하면 복잡해서 overfitting 올 수도 있다능.</li>
+</ul>
+</section>
+<section id="모델을-고르는-경우" class="level3">
+<h3 class="anchored" data-anchor-id="모델을-고르는-경우">6. 모델을 고르는 경우</h3>
+<p>-특성변수의 선택~ 🐶🐣🐹 - 3가지 방법 (과적합을 피하기 위한) - forward : 하나씩 넣어보기 ~ - backward : 하나씩 뺴보기 ~ - both : 둘다 👙 - 최근애는 정규화라는 방식을 자주 사용한다.</p>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
