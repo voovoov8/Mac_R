@@ -4,6 +4,7 @@ author: "yoon"
 format: html
 editor: visual
 ---
+# 분류에 대하여
 
 - $y$ 가 유한개의 값중 하나를 갖는다 
 - limited dependent variable 
@@ -48,4 +49,69 @@ df |>
 $$ 
 f(x) = \frac{1}{1 + \exp(-x)}
 $$
+$$
+\Pr (y = 1 | x) =G(\beta_0 + \beta_1  \times x)
+$$
+- 여기에서 $G(\cdot)$ 는 logistic function 임 
+- logit model (logistic + tobit)
+
+
+
+
+
+
+
+# 새로운 실험 
+```{r}
+rm(list = ls())
+library(readr)
+par <-read.csv("women_work.csv")
+
+# 메리지 변수를 factor 로 전환 
+par$married <-  factor(
+  par$married, labels = c("single", "married")
+)
+str(par)
+```
+- lpm 모형 추정, 회귀모형을 그대로 추정함. 
+
+```{r}
+bin.lpm<- lm(participation ~ age + education +married + children, 
+   data = par)
+```
+
+```{r}
+par |> 
+  mutate(pr.lpm = predict(bin.lpm)) |>
+  ggplot(aes(x = age, y = pr.lpm)) + 
+  geom_point(size = 2, alpha = 0.3) + 
+  geom_hline(yintercept = c(0, 1.0))
+
+```
+
+- logit 모형/ logistic regression 모형을 추정 
+- generalized linear model, glm() 함수 활용
+
+```{r}
+ bin.logit <- glm(participation ~ age + education +married + children, data = par, family = "binomial")
+
+```
+
+
+- 예측치를 만들어서 연령과 경제활동 참가 확률 예측치를 시각화
+
+```{r}
+par |> 
+  mutate(pr.logit = predict(bin.logit, type = "response")) |>
+   ggplot(aes(x = age, y = pr.logit)) + 
+  geom_point(size = 2, alpha = 0.3) + 
+  geom_hline(yintercept = c(0, 1.0))
+```
+
+
+```{r}
+library(caret)
+library(titanic)
+
+```
 
