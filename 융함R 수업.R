@@ -5,7 +5,7 @@ install.packages("waveslim")  # 패키지 설치
 install.packages("leaps")
 install.packages("MASS")
 install.packages("rpart.plot")
-
+install.packages("party")
 
 library(mlbench)
 library(waveslim)
@@ -76,3 +76,9 @@ model <- report(Species ~., data = iris)
 prp(model, type = 4, extra =1)
 
 predict(model, newdata = iris[101,, drop = F])
+
+
+
+library(party)
+model <- ctree(Species~., data = iris)
+plot(model)
