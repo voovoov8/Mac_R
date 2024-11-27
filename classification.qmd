@@ -43,4 +43,9 @@ df |>
   geom_hline(yintercept = c( 0, 1.0), 
              color = "red")
 ```
+- 로지스틱 function의 모습 (sigmoid function)
+
+$$ 
+f(x) = \frac{1}{1 + \exp(-x)}
+$$
 

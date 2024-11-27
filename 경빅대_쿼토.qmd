@@ -446,7 +446,38 @@ print(paste("RMSE:", rmse))
 
 # 11/27 수업
 
+## 좋은 모델을 골라는 방법
+- 모든 feature 을 집어 넣는게 맞을까? 
+- 우선... 보통 정보기준을 쓴다 
+
+### 1. 정보 기준
+    - BIC 정보기준 
+    - **AIC** 정보기준
+
+
+### 2. 방식 
+    - forward : 더해가는 방식 -> 한번 들어가면 변수를 다시 뺴지 않음 
+    - backward : 다 넣고 하나씩 뻄. -> 한번 빠지면 다시 못들어가는 문제 
+    - both
+    
 ```{r}
+# 변수 고르는 과정
+step_model <- stepAIC(lm(medv ~ ., data = train_data), 
+        direction = "both", 
+        trace = FALSE # stepAIC는 MASS 패키지에 포함된 함수로, 단계적 모델 선택을 수행
+)
 
+model_selection <- names(coef(step_model))[-1] # coef 가 모델에 있는 회귀 변ㄱ수반환하는 함수 
+print(model_selection)
+
+temp <- paste(model_selection, collapse = " + ")
+
+formula <- as.formula(paste("medv ~ ", temp))
+
+lm_selection <- lm(formula, data = train_data)
+summary(lm_selection) 
 ```
+  
 
+### 3. 정규화 : lasso, ridge (penalized regression)
+-> 영향을 줄이는 과정이 필요하다. 
