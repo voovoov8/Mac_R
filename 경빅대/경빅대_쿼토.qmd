@@ -210,8 +210,7 @@ ceosal |>
     \log(salary_i) =  a + b\log(sales_i) + e_i 
     $$
 
-{r}
-str(ceosal)
+{r} str(ceosal)
 
 ```{r}
 lm.sales <- lm(lsalary ~ lsales, data = ceosal)
@@ -278,8 +277,7 @@ $$
 y_i = \beta_0 +\beta_1 x_i + \gamma_0 z_i + e_i
 $$ - 즉 이처럼 z 변수를 집어넣는다.
 
--고등학고 성적이 대학 성적을 얼마나 설명하는지를 보인다. 
-
+-고등학고 성적이 대학 성적을 얼마나 설명하는지를 보인다.
 
 $$ 
 colGPA_i = a + b \times hsGPA_i + e_i
@@ -441,25 +439,28 @@ print(paste("RMSE:", rmse))
 
 -특성변수의 선택\~ 🐶🐣🐹 - 3가지 방법 (과적합을 피하기 위한) - forward : 하나씩 넣어보기 \~ - backward : 하나씩 뺴보기 \~ - both : 둘다 👙 - 최근애는 정규화라는 방식을 자주 사용한다.
 
-
-
-
 # 11/27 수업
 
 ## 좋은 모델을 골라는 방법
-- 모든 feature 을 집어 넣는게 맞을까? 
-- 우선... 보통 정보기준을 쓴다 
+
+-   모든 feature 을 집어 넣는게 맞을까?
+-   우선... 보통 정보기준을 쓴다
 
 ### 1. 정보 기준
-    - BIC 정보기준 
-    - **AIC** 정보기준
 
+```         
+- BIC 정보기준 
+- **AIC** 정보기준
+```
 
-### 2. 방식 
-    - forward : 더해가는 방식 -> 한번 들어가면 변수를 다시 뺴지 않음 
-    - backward : 다 넣고 하나씩 뻄. -> 한번 빠지면 다시 못들어가는 문제 
-    - both
-    
+### 2. 방식
+
+```         
+- forward : 더해가는 방식 -> 한번 들어가면 변수를 다시 뺴지 않음 
+- backward : 다 넣고 하나씩 뻄. -> 한번 빠지면 다시 못들어가는 문제 
+- both
+```
+
 ```{r}
 # 변수 고르는 과정
 step_model <- stepAIC(lm(medv ~ ., data = train_data), 
@@ -477,7 +478,7 @@ formula <- as.formula(paste("medv ~ ", temp))
 lm_selection <- lm(formula, data = train_data)
 summary(lm_selection) 
 ```
-  
 
 ### 3. 정규화 : lasso, ridge (penalized regression)
--> 영향을 줄이는 과정이 필요하다. 
+
+-\> 영향을 줄이는 과정이 필요하다.
