@@ -40,3 +40,4 @@ dat <- data.frame(x = x, y = as.factor(y))
 
 m <- svm(y ~ ., data = dat, kernel = "radial", cost = 1)
 plot(m, dat[sample(200, 100), ])
+
