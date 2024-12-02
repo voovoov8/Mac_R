@@ -1,0 +1,87 @@
+---
+title: "exer"
+author: "yoon"
+format: pdf
+editor: visual
+---
+
+# 기말 연습용 
+
+## 1. 선형을 활용한 예측 
+
+### 1-1. loading
+
+```{r}
+library(caret)
+library(MASS)
+library(tidyverse)
+```
+
+```{r}
+gpa <- read.csv("dataforclass/gpa1.csv",header = TRUE,
+                sep = "\t")
+str(gpa)
+```
+
+### 1-2. train과 test 데이터 구분
+
+-   데이터 구분
+
+```{r}
+train_i <- createDataPartition(gpa$colGPA,
+                               p = 0.8,
+                               list = FALSE) 
+train <- gpa[train_i,]
+test <- gpa[-train_i,]
+str(train)
+str(test)
+```
+
+### 1-3. 선형모형 제작과 예측 실험 
+
+-   선형 모델 제작
+
+```{r}
+lm_gpa <- lm(colGPA~., data = train)
+summary(lm_gpa)
+```
+
+-   예측값 계산
+
+```{r}
+predic_gpa <- predict(lm_gpa,newdata = test)
+
+result <- data.frame(
+  actual = test$colGPA,
+  predict = predic_gpa
+)
+head(result)
+```
+
+-   예측값 시각화
+
+```{r}
+result |> 
+  ggplot(mapping = aes(x = actual, y = predict)) + 
+  geom_point() + 
+  geom_abline(intercept = 0 , slope = 1, color = "red", linetype = "dashed")
+  labs( 
+    x = "실제 GPA", y = "예측 GPA"
+    )
+```
+
+-   MSE 와 RMSE
+
+```{r}
+# 계산
+mse = mean(result$actual - result$predict)^2
+rmse = sqrt(mse)
+
+# 값 확인 
+print(paste("MSE = ", mse))
+print(paste("RMSE = ", rmse))
+```
+
+### 1-4. 모델 선택
+
+-   AIC 방법을 활용한 모델 선택
