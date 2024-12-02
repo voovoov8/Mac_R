@@ -85,3 +85,22 @@ print(paste("RMSE = ", rmse))
 ### 1-4. 모델 선택
 
 -   AIC 방법을 활용한 모델 선택
+
+```{r}
+# 모델 확인 
+slected_model <-  stepAIC(lm(colGPA ~.,data = train),
+                          direction = "both",
+                          trace = FALSE
+                          )
+
+# 선택된 모델 확인
+model <- names(coef(slected_model))[-1]
+print(model)
+
+# 모델 붙여넣기 
+temp <- paste(model, collapse = " + ")
+formula <-as.formula(paste("colGPA ~",temp))
+
+lm_selected <- lm(formula, data = train)
+summary(lm_selected)
+```
