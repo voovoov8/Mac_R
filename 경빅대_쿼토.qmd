@@ -106,8 +106,7 @@ library(RColorBrewer)
 display.brewer.all()
 ```
 
-<br> 
-- Roe 가 가로축, salary가 세로축인 산포도 indus 별로 다른색
+<br> - Roe 가 가로축, salary가 세로축인 산포도 indus 별로 다른색
 
 ```{r}
 ggplot(ceosal, mapping = aes(x=roe, y = sales, color = as.factor(indus))) +
@@ -161,7 +160,7 @@ stargazer(lm.roe,
 -   1종 오류(false positive) : 0인데 0이 아니라고 하는 오류
 -   유의수준 5%, 기각역 2 (1.96), 신뢰수준 95%
 
-# 11/13 강의내용
+# 2. 지터와 산점도(11/13)
 
 -   roe와 임금의 관계로 돌아와서
 
@@ -189,7 +188,7 @@ ggplot(ceosal, mapping = aes(x = sales, y = salary)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE, color = "blue") +
   xlim(0, 25000) + 
-  ylim(0, 5000)
+  ylim(0, 5000) # lim을 추가 한다. 
 ```
 
 -   이 방식도 있다.
@@ -202,7 +201,7 @@ ceosal |>
   ggplot(mapping = aes(x = log_sales, y = log_salary)) +  
   geom_point() +
   geom_smooth(method = "lm", se = FALSE, color = "blue") +
-  geom_rug() 
+  geom_rug() # adding the rug 
 
 ```
 
@@ -210,8 +209,9 @@ ceosal |>
     \log(salary_i) =  a + b\log(sales_i) + e_i 
     $$
 
-{r}
+```{r}
 str(ceosal)
+```
 
 ```{r}
 lm.sales <- lm(lsalary ~ lsales, data = ceosal)
@@ -220,7 +220,7 @@ stargazer( lm.sales,
            keep.stat = c("n", "rsq"))
 ```
 
--   이걸 해석하는 방식이 중요하겠다 y의 x에 대한 탄력성이다. 즉 x가 1% 변했을때 y가 몇프로 변하느냐를 측정하는 방식
+-   이걸 해석하는 방식이 중요하겠다 y의 x에 대한 탄력성이다. 즉 x가 1% 변했을때 y가 몇 % 변하느냐를 측정하는 방식
 
 여기까지가 $x$ 가 하나인 simple regression
 
@@ -229,7 +229,8 @@ rm(list = ls())
 gpa<- read.csv("/Users/yunchaeho/r_space/gpa1.csv",
                 header = TRUE,
                 sep = "\t")
-attach(gpa)
+attach(gpa) 
+# attach(gpa) 실행 후에는 gpa$변수명 대신 직접 변수명만으로 데이터 프레임의 변수에 접근할 수 있다
 str(gpa)
 ```
 
@@ -249,7 +250,7 @@ ggplot(gpa, mapping = aes(x = hsGPA , colGPA, color= as.factor(male))) +
 ```{r}
 ggplot(gpa, mapping = aes(x = hsGPA , colGPA, color= as.factor(male))) +
   geom_point() + 
-  geom_smooth(method = "lm")
+  geom_smooth(method = "lm") +
   geom_jitter(width = 0.2)
 ```
 
@@ -257,10 +258,10 @@ ggplot(gpa, mapping = aes(x = hsGPA , colGPA, color= as.factor(male))) +
 ggplot(gpa, mapping = aes(x = hsGPA, y = colGPA, color = as.factor(male))) +  
   geom_point() + 
   geom_jitter(width = 0.2) +  
-  geom_smooth(method = "lm", aes(group = 1), se = FALSE)  
+  geom_smooth(method = "lm", aes(group = 1), se = FALSE) # 그룹을 하나로 묶어서 시각화
 ```
 
-aes로 그룹을 하나로 묶어버리는 케이스인데,
+aes로 그룹을 하나로 묶어버리는 케이스인데, 아래와 같은 방식으로 mapping 과정에서 붙일 수도 있다.
 
 ```{r}
 ggplot(gpa, mapping = aes(x = hsGPA, y = colGPA, color = as.factor(male), group = 1)) +  
@@ -269,7 +270,7 @@ ggplot(gpa, mapping = aes(x = hsGPA, y = colGPA, color = as.factor(male), group 
   geom_smooth(method = "lm")  
 ```
 
-# 11/20일 수업
+# 3. 통제변수의 활용(11/20)
 
 -   회귀분석을 하고 있다.
 -   x가 y를 얼마나 잘 설명하고 있는지 알고 싶다면, x이외의 변수들은 모두 맞추는 작업이 필요함. -\> 즉 이걸 "통제" 라고 하는데, 회귀식에 집어 넣는 것이 그것이다.
@@ -278,11 +279,12 @@ $$
 y_i = \beta_0 +\beta_1 x_i + \gamma_0 z_i + e_i
 $$ - 즉 이처럼 z 변수를 집어넣는다.
 
--고등학고 성적이 대학 성적을 얼마나 설명하는지를 보인다. 
+-   고등학고 성적이 대학 성적을 얼마나 설명하는지를 보인다.
 
+-   colGPA(대학 평점)를 hsGPA(고등학교 평점)로 예측하려고 한다.
 
 $$ 
-colGPA_i = a + b \times hsGPA_i + e_i
+colGPA_i = \alpha + \beta \times hsGPA_i + e_i
 $$
 
 ```{r}
@@ -290,8 +292,8 @@ str(gpa)
 ```
 
 ```{r}
-lm.hsGPA <- lm(colGPA ~ hsGPA, data = gpa)
-lm.ACT <- lm(colGPA ~ hsGPA + ACT, data = gpa)
+lm.hsGPA <- lm(colGPA ~ hsGPA, data = gpa) # 독립변수 하나짜리
+lm.ACT <- lm(colGPA ~ hsGPA + ACT, data = gpa) # 독립변수 두개짜리
 stargazer:: stargazer(lm.hsGPA,
                       lm.ACT,
                       type = "text",
@@ -311,7 +313,7 @@ stargazer::stargazer(lm.hsGPA,
                      keep.stat = c("n", "rsq"))
 ```
 
-## regression의 활용도에 대한...
+# 4. regression의 활용한 예측에 대한 개괄
 
 -   "causuality" -\> 순수 경제학은 이 문제를 보통 푼다
 -   그러나 최근에는 아래와 같은 문제를 많이 푼다
@@ -320,11 +322,11 @@ stargazer::stargazer(lm.hsGPA,
 
 우산 사람의 수와 비가 올 확률은 corr , 그러나 인과관계라고 볼 수는 없다. -\> forecasting 에서는 인과관계가 중요하지 않다. 정답을 고르는 것 만이 목적 -\> 반대로 causuality의 문제를 이야기 할때는 반대로 엄격한 기준에서 인과관계를 확인하는 것이 중요하다
 
-# forecasting 의 문제에 대한 이야기
+## forecasting 의 문제에 대한 이야기
 
 1.  회귀모형을 이용한 machine learning
 
-### 1. 목적
+### 4-1. 목적
 
 -   machine learning의 목적은 prediction 아래와 같이 주택가격을 예측하는 모형을 만들 것이다.
 
@@ -332,7 +334,7 @@ $$
 y_i = \beta_0 + \beta_1 x_i +  \beta_2 x_2i + \cdots + \beta_{ki} + \epsilon_i
 $$
 
-### 2. 패키지 설치
+### 4-2. 패키지 설치
 
 install.packages("caret") install.packages("MASS")
 
@@ -347,7 +349,7 @@ head(Boston)
 str(Boston)
 ```
 
-### 3. 편집 및 train
+### 4-3. 편집 및 train
 
 변수 설정 - $y$ : 주택가격 - $x$ : 지역 혹은 주택의 특성
 
@@ -357,15 +359,16 @@ str(Boston)
 -   data를 train 데이터와 test 데이터로 구분한다.(partition)
 
 ```{r}
-set.seed(12345)
+set.seed(12345) #난수 씨드 설정
 library(caret)
 
-traininex<- createDataPartition(Boston$medv,
+traininex <- createDataPartition(Boston$medv,
                            p = 0.8,
                            list = FALSE)
+
 train_data <- Boston[traininex, ]
 test_data <- Boston[-traininex, ]
-
+str(train_data)
 head(train_data)
 ```
 
@@ -376,7 +379,7 @@ lm.all <- lm(medv ~., data = train_data)
 summary(lm.all)
 ```
 
-### 4. 예측
+### 4-4. 예측
 
 ```{r}
 prediction <-  predict(lm.all, newdata = test_data)
@@ -394,6 +397,8 @@ result <-  data.frame(
 str(result)
 ```
 
+-   예측 결과 시각화
+
 ```{r}
 theme_set(theme_grey(base_family='NanumGothic'))
 
@@ -409,7 +414,7 @@ result |>
 -   실측값과 예측값 사이의 간격을 최소화 하고자 한다.
 -   rmse 구하는 과정인 것 같음
 
-### 5. 모형의 예측성과에 대한 평가
+### 4-5. 모형의 예측성과에 대한 평가
 
 -   성능, 적합도, 모델의 설정을 평가
 
@@ -435,49 +440,50 @@ print(paste("RMSE:", rmse))
 
 ```
 
--   과적합에 대한 설명도 함. ; 간단하고 단순한 방향으로 회귀선을 그으라는 거시다.. ; 모형을 막 막 복잡하게 막 막 막 막 그렇게 막 변수를 막 ㅋㅋ 추가하면 복잡해서 overfitting 올 수도 있다능.
+-   과적합에 대한 설명도 함. ; 간단하고 단순한 방향으로 회귀선을 그으라는 거시다.. ; 모형을 막 막 복잡하게 막 막 막 막 그렇게 막 변수를 막 ㅋㅋ 추가하면 복잡해서 overfitting 올 수도 있다.
 
-### 6. 모델을 고르는 경우
+### 4-6. 모델을 고르는 경우
 
 -특성변수의 선택\~ 🐶🐣🐹 - 3가지 방법 (과적합을 피하기 위한) - forward : 하나씩 넣어보기 \~ - backward : 하나씩 뺴보기 \~ - both : 둘다 👙 - 최근애는 정규화라는 방식을 자주 사용한다.
 
-
-
-
-# 11/27 수업
+# 5. 모델 선택 (11/27)
 
 ## 좋은 모델을 골라는 방법
-- 모든 feature 을 집어 넣는게 맞을까? 
-- 우선... 보통 정보기준을 쓴다 
 
-### 1. 정보 기준
-    - BIC 정보기준 
-    - **AIC** 정보기준
+-   모든 feature 을 집어 넣는게 맞을까?
+-   우선... 보통 정보기준을 쓴다
 
+### 5-1. 정보 기준
 
-### 2. 방식 
-    - forward : 더해가는 방식 -> 한번 들어가면 변수를 다시 뺴지 않음 
-    - backward : 다 넣고 하나씩 뻄. -> 한번 빠지면 다시 못들어가는 문제 
-    - both
-    
+-   BIC 정보기준
+-   **AIC** 정보기준 ( 이걸 main으로 쓸거다)
+
+### 5-2. 방식
+
+-   forward : 더해가는 방식 -\> 한번 들어가면 변수를 다시 뺴지 않음
+-   backward : 다 넣고 하나씩 뻄. -\> 한번 빠지면 다시 못들어가는 문제
+-   both
+
 ```{r}
 # 변수 고르는 과정
 step_model <- stepAIC(lm(medv ~ ., data = train_data), 
         direction = "both", 
-        trace = FALSE # stepAIC는 MASS 패키지에 포함된 함수로, 단계적 모델 선택을 수행
+        trace = TRUE # stepAIC는 MASS 패키지에 포함된 함수로, 단계적 모델 선택을 수행
 )
 
-model_selection <- names(coef(step_model))[-1] # coef 가 모델에 있는 회귀 변ㄱ수반환하는 함수 
+model_selection <- names(coef(step_model))[-1] # coef 가 모델에 있는 회귀 변수반환하는 함수 
 print(model_selection)
 
 temp <- paste(model_selection, collapse = " + ")
+print(temp)
 
 formula <- as.formula(paste("medv ~ ", temp))
+print(formula)
 
 lm_selection <- lm(formula, data = train_data)
 summary(lm_selection) 
 ```
-  
 
-### 3. 정규화 : lasso, ridge (penalized regression)
--> 영향을 줄이는 과정이 필요하다. 
+### 5-3. 정규화 : lasso, ridge (penalized regression)
+
+-\> 영향을 줄이는 과정이 필요하다.

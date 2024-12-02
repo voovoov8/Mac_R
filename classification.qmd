@@ -4,34 +4,38 @@ author: "yoon"
 format: html
 editor: visual
 ---
-# 분류에 대하여
 
-- $y$ 가 유한개의 값중 하나를 갖는다 
-- limited dependent variable 
+# 0. 이항선택모형
 
-- 경제활동 참가를 하는지 여부 (1,0), 출산여부 (1,0) , 어떤 교통수단으로 등
+## 0-1. 개념 설명
 
-- discrete choice model (이산 선택 모형)
-- binary choice model (이할 선택 모형)
+-   $y$ 가 유한개의 값중 하나를 갖는다
 
-- 경제활동참가 여부 $ y\ in \ { 0, 1 \}$ 
-  - 관심있는 사건을 1로 놓음
-  
--우리의 관심은 다음에 있음 
-$$ 
+-   limited dependent variable
+
+-   경제활동 참가를 하는지 여부 (1,0), 출산여부 (1,0) , 어떤 교통수단으로 등
+
+-   discrete choice model (이산 선택 모형)
+
+-   binary choice model (이항 선택 모형)
+
+-   경제활동참가 여부 \$ y in  { 0, 1 }\$
+
+    -   관심있는 사건을 1로 놓음
+
+-우리의 관심은 다음에 있음 $$ 
 \Pr (y = 1 | x)
-$$
-- 조건부 확률을 다음과 같이 모형화 한다. 
-  - 선형확률 모형 (Linear probability model)
-  - 로짓(logit) 혹은 로지스틱(logistic) 모형
-  
+$$ - 조건부 확률을 다음과 같이 모형화 한다. - 선형확률 모형 (Linear probability model) - 로짓(logit) 혹은 로지스틱(logistic) 모형
+
 $$ 
 \Pr (y = 1 | x) = \beta_0 + \beta_1  \times x
 $$
 
-- LPM 의 경우, 일정 $x$ 의 값에 대하여 1보다 크거나 0보더 작은 경우가 발생할 수 있음 
+-   LPM 의 경우, 일정 $x$ 의 값에 대하여 1보다 크거나 0보더 작은 경우가 발생할 수 있음
 
-- 1~0 사이에 확률이 들어올 수 있도록 특정 함수를 이용해서 반환한다. 
+-   1\~0 사이에 확률이 들어올 수 있도록 특정 함수를 이용해서 반환한다.
+
+## 0-2. 로지스틱 함수
 
 ```{r}
 library(tidyverse)
@@ -44,24 +48,17 @@ df |>
   geom_hline(yintercept = c( 0, 1.0), 
              color = "red")
 ```
-- 로지스틱 function의 모습 (sigmoid function)
+
+-   로지스틱 function의 모습 (sigmoid function)
 
 $$ 
 f(x) = \frac{1}{1 + \exp(-x)}
-$$
-$$
+$$ $$
 \Pr (y = 1 | x) =G(\beta_0 + \beta_1  \times x)
-$$
-- 여기에서 $G(\cdot)$ 는 logistic function 임 
-- logit model (logistic + tobit)
+$$ - 여기에서 $G(\cdot)$ 는 logistic function 임 - logit model (logistic + tobit)
 
+# 1. 새로운 실험
 
-
-
-
-
-
-# 새로운 실험 
 ```{r}
 rm(list = ls())
 library(readr)
@@ -73,7 +70,10 @@ par$married <-  factor(
 )
 str(par)
 ```
-- lpm 모형 추정, 회귀모형을 그대로 추정함. 
+
+## 1-1. LPM 
+
+-   lpm 모형 추정, 회귀모형을 그대로 추정함.
 
 ```{r}
 bin.lpm<- lm(participation ~ age + education +married + children, 
@@ -85,29 +85,35 @@ par |>
   mutate(pr.lpm = predict(bin.lpm)) |>
   ggplot(aes(x = age, y = pr.lpm)) + 
   geom_point(size = 2, alpha = 0.3) + 
-  geom_hline(yintercept = c(0, 1.0))
+  geom_hline(yintercept = c(0, 1.0)) + 
+  labs( x = "나이", 
+        y = "LPM 예측 확률")
 
 ```
 
-- logit 모형/ logistic regression 모형을 추정 
-- generalized linear model, glm() 함수 활용
+-\> 확인한것과 같이 1 을 넘어가는 확률이 발생하게 된다.
+
+## 1-2. Logit Model
+
+-   logit 모형/ logistic regression 모형을 추정
+-   generalized linear model, glm() 함수 활용
 
 ```{r}
- bin.logit <- glm(participation ~ age + education +married + children, data = par, family = "binomial")
-
+ bin.logit <- glm(participation ~ age + education + married + children, data = par, family = "binomial") # glm(일반화 선형 모델)을 만든다. 
 ```
 
+-\> family = "binomial" 과정을 통해 로지스틱 회귀를 지정한다. 따라서 이진결과를 모델링.
 
-- 예측치를 만들어서 연령과 경제활동 참가 확률 예측치를 시각화
+-   예측치를 만들어서 연령과 경제활동 참가 확률 예측치를 시각화
 
 ```{r}
 par |> 
-  mutate(pr.logit = predict(bin.logit, type = "response")) |>
-   ggplot(aes(x = age, y = pr.logit)) + 
+  mutate(pr.logit = predict(bin.logit, type = "response")) |> 
+  # response type 으로 지정해서 확률값으로 반환 
+  ggplot(aes(x = age, y = pr.logit)) + 
   geom_point(size = 2, alpha = 0.3) + 
   geom_hline(yintercept = c(0, 1.0))
 ```
-
 
 ```{r}
 library(caret)
@@ -115,9 +121,9 @@ library(titanic)
 
 ```
 
-- data 로딩 
+-   data 로딩
+
 ```{r}
 df <- titanic::titanic_train
 str(df)
 ```
-
