@@ -71,7 +71,7 @@ par$married <-  factor(
 str(par)
 ```
 
-## 1-1. LPM 
+## 1-1. LPM
 
 -   lpm 모형 추정, 회귀모형을 그대로 추정함.
 
@@ -115,6 +115,8 @@ par |>
   geom_hline(yintercept = c(0, 1.0))
 ```
 
+### 새로운 데이터로 예측 실험
+
 ```{r}
 library(caret)
 library(titanic)
@@ -124,6 +126,131 @@ library(titanic)
 -   data 로딩
 
 ```{r}
-df <- titanic::titanic_train
-str(df)
+data <- titanic::titanic_train
+str(data)
 ```
+
+```{r}
+df  <- data[, -c(1, 4, 9, 11)]
+
+head(df)
+df$Survived  <- factor(df$Survived,
+                          levels = c(0,1),
+                          labels = c("died", "sirvived"))
+
+table(df$Survived)
+```
+
+```{r}
+df$Age[is.na(df$Age)] <- median(df$Age, na.rm= TRUE)
+
+df$Embarked[is.na(df$Embarked)] <- "S"
+```
+
+```{r}
+set.seed(123456)
+train_index <-createDataPartition(df$Survived, 
+                                  p = 0.7, 
+                                  list = FALSE)
+
+train_df <- df[train_index,]
+test_df <- df[-train_index,]
+```
+
+```{r}
+model <- glm(Survived ~., data = train_df,
+             family = "binomial")
+
+summary(model)
+```
+
+```{r}
+prob.pred <- predict(model, 
+                      newdata = test_df,
+                      type = "response")
+
+head(prob.pred)
+```
+
+-   예측확률을 기준으로 \> 0.5 **생존**, \<0.5 **사망**
+
+```{r}
+prediction <- ifelse(prob.pred > 0.5, "survived", "died")
+prediction <- factor(prediction, levels = c("died", "survived"))
+head(prediction)
+```
+
+-   TP, TF, FP, FT 그리는 confusion matrix 을 그리기
+
+```{r}
+confusion_mat <- table(predicted = prediction,
+                          actual = test_df$Survived)
+print(confusion_mat)
+```
+
+-   정확도 (accuracy) = (TP +TF)/ 전체
+
+```{r}
+confusion_mat_df <- as.data.frame(as.table(confusion_mat))
+colnames(confusion_mat_df) <- c("predicted",
+                                "actual",
+                                "count")
+
+confusion_mat_df |> 
+  ggplot(aes(x = actual, y = predicted, fill = count)) + 
+  geom_tile() + 
+  geom_text(aes(label = count), color = "black", size = 5) +
+  scale_fill_gradient(low= "white", high = "blue")
+  labs(x = "Actual", y  = "Predicted") 
+```
+
+### 정확도(Acurracy)
+
+```{r}
+str(confusion_mat_df)
+# confusion_mat_df 데이터프레임 사용
+confusion_matrix <- table(Predicted = confusion_mat_df$predicted, 
+                          Actual = confusion_mat_df$actual)
+
+# 정확도 계산
+accuracy <- sum(diag(confusion_matrix)) / sum(confusion_matrix)
+
+# 정확도 출력
+print(paste('정확도:', round(accuracy, 4)))
+```
+
+### 정밀도 (Precision) 
+
+-   precision = TP / (predicted to be positive)
+
+```{r}
+# precision 
+confusion_mat
+precision <-  confusion_mat[2,2]/ sum(confusion_mat[2,]) 
+print(precision)
+```
+
+### 리콜(Recall) 
+
+-   만약 무기를 집고 있는 애들을 공항에서 잡아낼려면, 실제 중에서 얼마나 많은 애들을 걸러내는냐가 목적함수
+
+-   recall = TP/ Actual positive
+
+-   actuall positive = TP + FN
+
+    ```{r}
+     recall <-confusion_mat[2,2]/ sum(confusion_mat[,2])
+     print(recall)
+    ```
+
+    ```{r}
+    performance <-  data.frame(
+      metric = c("accuracy", "precision", "recall"),
+      value = c(accuracy, precision, recall)
+    )
+
+    performance |> 
+      ggplot(aes(x = metric, y = value, fill = metric))+ 
+      geom_bar(stat = "identity") + 
+      geom_text(aes(label = round(value,3)), vjust = -0.5) 
+    ```

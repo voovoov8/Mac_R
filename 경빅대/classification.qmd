@@ -5,6 +5,8 @@ format: html
 editor: visual
 ---
 
+지도학습과 비지도 학습중 Regression은 비지도 학습으로 본다. 그중에서 확률을 다루는 프로빗과 로짓 모형에 대한 이야기도 했었다
+
 # 분류에 대하여
 
 -   $y$ 가 유한개의 값중 하나를 갖는다
@@ -23,7 +25,11 @@ editor: visual
 
 -우리의 관심은 다음에 있음 $$ 
 \Pr (y = 1 | x)
-$$ - 조건부 확률을 다음과 같이 모형화 한다. - 선형확률 모형 (Linear probability model) - 로짓(logit) 혹은 로지스틱(logistic) 모형
+$$
+
+-   조건부 확률을 다음과 같이 모형화 한다.
+-   선형확률 모형 (Linear probability model)
+-   로짓(logit) 혹은 로지스틱(logistic) 모형
 
 $$ 
 \Pr (y = 1 | x) = \beta_0 + \beta_1  \times x
@@ -49,7 +55,9 @@ df |>
 
 $$ 
 f(x) = \frac{1}{1 + \exp(-x)}
-$$ $$
+$$
+
+$$
 \Pr (y = 1 | x) =G(\beta_0 + \beta_1  \times x)
 $$ - 여기에서 $G(\cdot)$ 는 logistic function 임 - logit model (logistic + tobit)
 
@@ -101,7 +109,10 @@ par |>
   geom_hline(yintercept = c(0, 1.0))
 ```
 
+## 새로운 데이터 활용하기
+
 ```{r}
+
 library(caret)
 library(titanic)
 
@@ -112,4 +123,21 @@ library(titanic)
 ```{r}
 df <- titanic::titanic_train
 str(df)
+```
+
+```{r}
+df  <- df [, -c(1, 4, 9, 11)]
+
+df$Survived  <- factor(df$Survived,
+                          levels = c(0,1),
+                          labels = c("died", "sirvived"))
+
+table(df$Survived)
+```
+
+```{r}
+df$Age[is.na(df$Age)] <- median(df$Age,
+                               na.rm= TRUE)
+
+df$Embarked[is.na(data$Embarked)] <- "s"
 ```
