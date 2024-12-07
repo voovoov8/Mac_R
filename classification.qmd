@@ -219,7 +219,7 @@ accuracy <- sum(diag(confusion_matrix)) / sum(confusion_matrix)
 print(paste('정확도:', round(accuracy, 4)))
 ```
 
-### 정밀도 (Precision) 
+### 정밀도 (Precision)
 
 -   precision = TP / (predicted to be positive)
 
@@ -230,7 +230,7 @@ precision <-  confusion_mat[2,2]/ sum(confusion_mat[2,])
 print(precision)
 ```
 
-### 리콜(Recall) 
+### 리콜(Recall)
 
 -   만약 무기를 집고 있는 애들을 공항에서 잡아낼려면, 실제 중에서 얼마나 많은 애들을 걸러내는냐가 목적함수
 

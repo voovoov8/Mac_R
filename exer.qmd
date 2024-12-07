@@ -104,3 +104,38 @@ formula <-as.formula(paste("colGPA ~",temp))
 lm_selected <- lm(formula, data = train)
 summary(lm_selected)
 ```
+
+## 2. Q3
+
+```{r}
+install.packages("AER")
+# AER 패키지 로드
+library(AER)
+
+# CPS1988 데이터셋 불러오기
+data("CPS1988")
+
+# 데이터셋의 첫 몇 행 확인
+head(CPS1988)
+```
+
+### A. 교육수익률을 추정
+
+```{r}
+View(CPS1988)
+str(CPS1988)
+
+# 교육 수익률 추정.
+# 로그-로그 회귀 모델 적용
+model <- lm(log(wage) ~ log(education), data = CPS1988)
+
+# 모델 요약 출력
+summary(model)
+
+# 교육의 1% 증가에 따른 임금의 백분율 변화 계산
+coef <- coef(model)["log(education)"]
+percent_change <- (exp(coef) - 1) * 100
+
+# 결과 출력
+cat("교육의 1% 증가에 따른 임금의 백분율 변화:", round(percent_change, 2), "%\n")
+```

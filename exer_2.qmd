@@ -1,0 +1,277 @@
+---
+title: "exer_2"
+author: "yoon"
+format: html
+editor: visual
+---
+
+# 두번째 시험 연습
+
+## 1. 엄마의 흡연이 태아의 건강에 어떤 영향을 주는가 
+
+데이터 불러오기
+
+```{r}
+baby <- read.csv("baby.csv")
+str(baby)
+colnames(baby)
+```
+
+-   엄마의 흡연 여부에 따라서
+
+### 1. 엄마의 흡연 여부에 따라서 아동의 몸무게가 얼마나 다른지 탐색적 분석을 통해 살펴보아라
+
+```{r}
+library(ggplot2)
+
+# ggplot을 사용하여 산점도와 추세선을 그립니다.
+ggplot(baby, aes(x = mbsmoke, y = bweight)) +
+  geom_point(color = "blue") +  # 산점도
+  labs(title = "Bweight vs Mbsmoke", 
+       x = "Bweight", 
+       y = "Mbsmoke")
+```
+
+```{r}
+# ggplot을 사용하여 mbsmoke에 따라 히스토그램을 겹쳐서 그립니다.
+ggplot(baby, aes(x = bweight, fill = factor(mbsmoke))) +
+  geom_histogram(position = "identity", alpha = 0.5, bins = 30) +  # 히스토그램
+  labs(title = "Bweight Distribution by Smoking Status", 
+       x = "Bweight", 
+       y = "Count", 
+       fill = "Smoking Status") +
+  scale_fill_manual(values = c("nonsmoker" = "blue", "smoker" = "red"))  # 색상 설정
+```
+
+-   확률밀도함수로 그려본 히스토그램
+
+```{r}
+# ggplot을 사용하여 mbsmoke에 따라 확률 밀도 함수로 히스토그램을 겹쳐서 그립니다.
+ggplot(baby, aes(x = bweight, fill = factor(mbsmoke))) +
+  geom_density(alpha = 0.5) +  # 확률 밀도 함수
+  labs(title = "Bweight Density by Smoking Status", 
+       x = "Bweight", 
+       y = "Density", 
+       fill = "Smoking Status") +
+  scale_fill_manual(values = c("nonsmoker" = "blue", "smoker" = "red"))  # 색상 설정
+```
+
+-   비흡연자의 경우에 아이의 몸무게가 조금더 큰 분포를 보이고 있다.
+
+### 2. 회귀분석 결과는 어떤가? 
+
+```{r}
+
+# mbsmoke 컬럼의 값을 0과 1로 변환합니다.
+baby$mbsmoke <- ifelse(baby$mbsmoke == "nonsmoker", 0, 1)  # nonsmoker는 0, smoker는 1로 변환
+# 회귀 분석을 진행합니다.
+model <- lm(mbsmoke ~ bweight, data = baby)  # 선형 회귀 모델 생성
+
+# 회귀 분석 결과 요약
+summary(model)
+```
+
+### 3. 산모의 연령에 따라서 아동의 몸무게가 어떻게 다른지 산포도를 그리되, 엄마의 흡연 여부에 따라서 어떻게 다른지 산포도에 반영하라. 
+
+```{r}
+# ggplot을 사용하여 mage와 bweight의 산점도를 그리고 흡연 여부에 따라 색상을 다르게 하며 jitter를 추가하고 투명도를 높입니다.
+ggplot(baby, aes(x = mage, y = bweight, color = factor(mbsmoke))) +
+  geom_jitter(alpha = 0.4, width = 0.4, height = 0.2) +  # jitter 추가 및 투명도 증가
+  labs(title = "Bweight vs Mage by Smoking Status", 
+       x = "Mother's Age (mage)", 
+       y = "Birth Weight (bweight)", 
+       color = "Smoking Status") +
+  scale_color_manual(values = c("0" = "skyblue", "1" = "red"))  # 색상 설정
+```
+
+```{r}
+# ggplot을 사용하여 mage와 bweight의 산점도를 그리고 흡연 여부에 따라 색상을 다르게 하며 jitter를 추가합니다.
+ggplot(baby, aes(x = mage, y = bweight, shape = factor(mbsmoke))) +  # shape으로 구분
+  geom_jitter(alpha = 0.9, width = 0.2, height = 0.2, aes(color = factor(mbsmoke))) +  # jitter 추가
+  labs(title = "Bweight vs Mage by Smoking Status", 
+       x = "Mother's Age (mage)", 
+       y = "Birth Weight (bweight)", 
+       color = "Smoking Status", 
+       shape = "Smoking Status") +
+  scale_color_manual(values = c("0" = "darkblue", "1" = "darkred")) +  # 색상 설정
+  scale_shape_manual(values = c(16, 17))  # 서로 다른 모양 설정
+```
+
+## 2. 회귀분석을 진행 
+
+### 데이터 불러오기
+
+```{r}
+# AER 패키지 로드
+library(AER)
+
+# CPS1988 데이터셋 불러오기
+data("CPS1988")
+
+# 데이터셋의 첫 몇 행 확인
+head(CPS1988)
+```
+
+### A. 교육수익률을 추정하라
+
+-   교육수익률이란 뭘까?
+
+-   교육한단위 증가당 임금증가율이라고 정의 할 수 있을까?
+
+```{r}
+library(dplyr)
+str(CPS1988)
+summary(CPS1988$wage)
+summary(CPS1988$education) # 교육이 0 인 경우 로그를 취할 수 없다. 
+
+# CPS1988 데이터프레임의 education 컬럼에 아주 작은 값을 더함. 
+CPS1988$education <- CPS1988$education + 1
+
+model2 <- lm(log(wage) ~ log(education), data = CPS1988)  # 선형 회귀 모델 생성
+model3 <- lm(wage ~ education, data = CPS1988)  # 선형 회귀 모델 생성
+
+summary(model2)
+summary(model3)
+
+# 수익률이란, 이익/ 투자비용 이라고 볼 수 있다. 
+# 교육으로 따지면 임금 / 교육투자(시간)
+# 교육이 1% 증가할떄마다, 임금이 0.68254% 증가한다고 볼 수 있다. 
+# 또한 교육의 1단위 증가당 47.1810단위의 임금이 증가한다고 볼 수 있다. 
+```
+
+### B. 파트타임 결정에 미치는 모형을 구성하고 추정하라 
+
+파트타임 결정에 미치는 모형을 구성
+
+```{r}
+colnames(CPS1988)
+
+
+# 더미변수 생성
+CPS1988_dummies <- CPS1988 %>%
+  mutate(
+    smsa_yes = as.integer(smsa == "yes"),
+    smsa_no = as.integer(smsa == "no"),
+    parttime_yes = as.integer(parttime == "yes"),
+    parttime_no = as.integer(parttime == "no")
+  )
+str(CPS1988_dummies)
+```
+
+```{r}
+model4_logit <- glm(parttime_yes ~ education + experience, 
+                    data = CPS1988_dummies, 
+                    family = binomial(link = "logit"))
+
+# 모델 요약 출력
+summary(model4_logit)
+```
+
+## 3. 열린 재정의 opi
+
+### 패키지 불러오기
+
+```{r}
+#install.packages('ggridges')
+library(ggridges)
+```
+
+```{r}
+data <- data.frame(
+  Month = factor(c("1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"),
+                 levels = c("1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"), 
+                 ordered = TRUE),
+  Type_A_Collection_Rate = c(7.50, 18.08, 25.47, 33.21, 39.71, 47.99, 55.87, 67.37, 74.59, 83.29, 88.81, 100.88),
+  Type_B_Collection_Rate = c(8.33, 14.12, 22.27, 30.55, 39.31, 48.46, 56.36, 64.07, 73.63, 80.01, 88.90, 97.47),
+  Type_C_Collection_Rate = c(5.82, 15.41, 21.34, 30.88, 39.46, 45.55, 56.07, 62.59, 70.44, 82.25, 90.59, 98.23),
+  Overall_Progress = c(6.61, 14.56, 24.10, 31.97, 39.70, 48.81, 56.25, 66.36, 73.43, 82.60, 90.26, 99.04)
+)
+```
+
+```{r}
+str(data)
+colnames(data)
+
+
+# 월별 진도율 산점도
+ggplot(data) +
+  geom_point(aes(x = Month, y = Type_A_Collection_Rate), color = "grey", size = 0.5) +
+  geom_point(aes(x = Month, y = Type_B_Collection_Rate), color = "grey", size = 0.5) +
+  geom_point(aes(x = Month, y = Type_C_Collection_Rate), color = "grey", size = 0.5) +
+  labs(title = "월별 진도율 산점도",
+       x = "월",
+       y = "진행율 (%)") +
+  theme_minimal(base_family='NanumGothic') +
+  theme(axis.text.x = element_text(angle = 45))
+
+```
+
+### C. 월별 산점도와 추세선
+
+```{r}
+ggplot(data) +
+  geom_point(aes(x = Month, y = Type_A_Collection_Rate), color = "grey", size = 1) +
+  geom_point(aes(x = Month, y = Type_B_Collection_Rate), color = "grey", size = 1) +
+  geom_point(aes(x = Month, y = Type_C_Collection_Rate), color = "grey", size = 1) +
+  geom_line(aes(x = Month, y = Overall_Progress, group = 1), color = "red", size = 0.5) +
+  geom_point(aes(x = Month, y = Overall_Progress), color = "red", size = 0.5) +
+  labs(title = "월별 진도율 산점도",
+       x = "월",
+       y = "진행율 (%)") +
+  theme_minimal(base_family='NanumGothic') +
+  theme(axis.text.x = element_text(angle = 45))
+```
+
+### D.  ggridges을 활용한 그래프 그리기. 
+
+```{r}
+# 필요한 패키지 설치 및 로드
+library(ggplot2)
+library(ggridges)
+library(tidyr)
+
+# 데이터를 long 형태로 변환
+data_long <- data %>%
+  gather(key = "Type", value = "Rate", 
+         Type_A_Collection_Rate, Type_B_Collection_Rate, Type_C_Collection_Rate)
+
+# ridge plot 생성
+ggplot(data_long, aes(x = Rate, y = Month, fill = Month)) +
+  geom_density_ridges(alpha = 0.6) +
+  labs(title = "월별 진도율 분포",
+       x = "진행율 (%)",
+       y = "월") +
+  theme_minimal(base_family = 'NanumGothic') +
+  theme(legend.position = "none")
+```
+
+```{r}
+
+library(tidyr)
+library(ggplot2)
+library(ggridges)
+library(dplyr)
+
+# 데이터를 long 형태로 변환
+data_long <- data %>%
+  gather(key = "Type", value = "Rate", 
+         Type_A_Collection_Rate, Type_B_Collection_Rate, Type_C_Collection_Rate)
+
+# Overall_Progress를 기준으로 색상 그라데이션 생성
+data <- data %>%
+  mutate(Progress_Color = scale(Overall_Progress))
+
+# ridge plot 생성
+ggplot(data_long) +
+  geom_density_ridges(aes(x = Rate, y = Month, fill = data$Progress_Color[match(Month, data$Month)]), 
+                      alpha = 0.6, scale = 3) +
+  geom_line(data = data, aes(x = Overall_Progress, y = Month, group = 1), color = "red", size = 1) +
+  geom_point(data = data, aes(x = Overall_Progress, y = Month), color = "red", size = 2) +
+  scale_fill_gradient(low = "lightblue", high = "darkblue", name = "전체 진행률") +
+  labs(title = "월별 진도율 분포",
+       x = "진행율 (%)",
+       y = "월") +
+  theme_minimal(base_family = 'NanumGothic') +
+  theme(legend.position = "right") +
+  coord_flip()
+```
